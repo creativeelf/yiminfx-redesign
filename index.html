@@ -103,24 +103,82 @@
       margin-bottom: 8px;
     }
 
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 32px;
+      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      flex-shrink: 0;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .hero-headline {
-      font-size: clamp(48px, 7vw, 80px);
+      font-size: clamp(20px, 2.8vw, 31px);
       font-weight: 700;
       letter-spacing: -0.025em;
-      line-height: 1.05;
+      line-height: 1.1;
+      max-width: 800px;
       background: linear-gradient(135deg, #fff 30%, #888 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
     }
 
     .hero-sub {
-      font-size: clamp(17px, 2.5vw, 21px);
+      font-size: clamp(16px, 2.2vw, 19px);
       font-weight: 400;
-      color: #6e6e73;
+      color: #86868b;
       letter-spacing: -0.01em;
-      max-width: 600px;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .hero-name {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .hero-headline-blue {
+      background: none;
+      -webkit-text-fill-color: #2997ff;
+      color: #2997ff;
+    }
+
+    .hero-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .hero-keywords span {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #c7c7cc;
+      padding: 7px 16px;
+      border: 1px solid rgba(41,151,255,0.4);
+      border-radius: 980px;
+      background: rgba(41,151,255,0.08);
+    }
+
+    .hero-sub + .hero-sub {
+      margin-top: 18px;
     }
 
     .hero-cta {
@@ -1052,9 +1110,20 @@
   </nav>
 
   <section class="hero">
-    <p class="hero-eyebrow">Welcome to Yimin's</p>
-    <h1 class="hero-headline">Tech Art Portfolio</h1>
-    <p class="hero-sub">A curated collection of work spanning film, design, and beyond.</p>
+    <div class="hero-photo">
+      <img src="images/profile.png" alt="Yimin Zhang">
+    </div>
+    <p class="hero-name">Yimin Zhang</p>
+    <h1 class="hero-headline hero-headline-blue">Technical Artist</h1>
+    <div class="hero-keywords">
+      <span>Pipeline</span>
+      <span>VFX</span>
+      <span>Procedural System</span>
+      <span>Visualization</span>
+      <span>AR/VR</span>
+    </div>
+    <p class="hero-sub">I am Yimin. I solve complex creative and technical challenges that unblock production, and pioneer workflows that unlock new experiences.</p>
+    <p class="hero-sub">Over the past decade, I have helped shipped Theme Park attractions, Marvel films, Meta&rsquo;s Avatar system and VR platform.</p>
     <div class="hero-cta">
       <a href="#reel" class="btn btn-primary">View Reel</a>
       <a href="#portfolio" class="btn btn-secondary">See Portfolio</a>
@@ -1432,6 +1501,9 @@
           c+=vec3(.4,.9,.88)*stars*.4;
           c*=1.-dot(uv*.28,uv*.28);
           c=c/(c+.35)*1.45;
+
+          /* Dim the background so the masked logo reads brighter */
+          c*=mix(.78, 1.0, blend);
 
           gl_FragColor=vec4(clamp(c,.0,1.),1.);
         }
