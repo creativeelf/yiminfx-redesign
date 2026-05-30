@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Claude local project data (not part of the site)
+.claude/
+
+# Netlify CLI
+.netlify/
+
+# Editor / OS cruft
+*.swp
+Thumbs.db
