@@ -392,8 +392,29 @@
       transform-style: preserve-3d;
     }
 
-    .proj-card {
+    .proj-col {
       flex: 0 0 185px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-title-top {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      color: #fff;
+      text-align: center;
+      min-height: 2.5em;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .proj-card {
+      width: 185px;
       height: 300px;
       border-radius: 12px;
       position: relative;
@@ -423,7 +444,7 @@
       z-index: 20;
     }
 
-    .proj-card:nth-child(3) { z-index: 5; }
+    .proj-col:nth-child(3) .proj-card { z-index: 5; }
 
     .card-shine {
       position: absolute;
@@ -602,7 +623,9 @@
 
     @media (max-width: 700px) {
       .card-strip { gap: 6px; padding: 10px 16px 50px; }
-      .proj-card { flex: 0 0 130px; height: 210px; }
+      .proj-col { flex: 0 0 130px; }
+      .proj-card { width: 130px; height: 210px; }
+      .card-title-top { font-size: 12px; min-height: 3em; }
       .overlay-hero { padding: 0 24px 40px; min-height: 45vh; }
       .overlay-body { padding: 40px 24px 80px; }
     }
@@ -1059,92 +1082,102 @@
     <div class="card-stage">
       <div class="card-strip">
 
-        <div class="proj-card" tabindex="0" role="button" aria-label="Open Project 1"
-          data-title="Project 1"
-          data-tag="AR / Real-Time"
-          data-desc="A real-time augmented reality experience built for Meta's social platforms. Leveraged custom shaders and optimized render pipelines to deliver immersive effects at scale across hundreds of millions of devices."
-          data-chips="GLSL,Meta Spark,AR,Shader Graph,Real-Time"
-          style="
-            --ry: 16deg; --tx: -28px; --sc: 0.91;
-            --bg: url('images/thumbnails/1_project.png');
-          ">
-          <div class="card-shine"></div>
-          <div class="card-content">
-            <div>
-              <div class="card-tag">AR / Real-Time</div>
-              <h3 class="card-title">Project<br>One</h3>
+        <div class="proj-col">
+          <div class="card-title-top">Transformer Theme Park</div>
+          <div class="proj-card" tabindex="0" role="button" aria-label="Open Transformer Theme Park"
+            data-title="Transformer Theme Park"
+            data-tag="AR / Real-Time"
+            data-desc="A real-time augmented reality experience built for Meta's social platforms. Leveraged custom shaders and optimized render pipelines to deliver immersive effects at scale across hundreds of millions of devices."
+            data-chips="GLSL,Meta Spark,AR,Shader Graph,Real-Time"
+            style="
+              --ry: 16deg; --tx: -28px; --sc: 0.91;
+              --bg: url('images/thumbnails/1_project.png');
+            ">
+            <div class="card-shine"></div>
+            <div class="card-content">
+              <div>
+                <div class="card-tag">AR / Real-Time</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="proj-card" tabindex="0" role="button" aria-label="Open Project 2"
-          data-title="Project 2"
-          data-tag="Film VFX"
-          data-desc="Visual effects work on a major Marvel production. Responsible for technical art integration between 3D and compositing pipelines, ensuring consistent look development across hundreds of shots."
-          data-chips="Houdini,Nuke,Python,USD,VFX Pipeline"
-          style="
-            --ry: 8deg; --tx: -14px; --sc: 0.96;
-            --bg: url('images/thumbnails/2_project.png');
-          ">
-          <div class="card-shine"></div>
-          <div class="card-content">
-            <div>
-              <div class="card-tag">Film VFX</div>
-              <h3 class="card-title">Project<br>Two</h3>
+        <div class="proj-col">
+          <div class="card-title-top">TTF Animation</div>
+          <div class="proj-card" tabindex="0" role="button" aria-label="Open TTF Animation"
+            data-title="TTF Animation"
+            data-tag="Film VFX"
+            data-desc="Visual effects work on a major Marvel production. Responsible for technical art integration between 3D and compositing pipelines, ensuring consistent look development across hundreds of shots."
+            data-chips="Houdini,Nuke,Python,USD,VFX Pipeline"
+            style="
+              --ry: 8deg; --tx: -14px; --sc: 0.96;
+              --bg: url('images/thumbnails/2_project.png');
+            ">
+            <div class="card-shine"></div>
+            <div class="card-content">
+              <div>
+                <div class="card-tag">Film VFX</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="proj-card" tabindex="0" role="button" aria-label="Open Project 3"
-          data-title="Project 3"
-          data-tag="Game Dev"
-          data-desc="A full-scale VR experience for a Transformers-themed venue. Built interactive real-time environments with custom tooling to streamline artist workflows and hit aggressive performance targets."
-          data-chips="Unity,C#,HLSL,VR,Custom Tools"
-          style="
-            --ry: 0deg; --tx: 0px; --sc: 1;
-            --bg: url('images/thumbnails/3_project.png');
-          ">
-          <div class="card-shine"></div>
-          <div class="card-content">
-            <div>
-              <div class="card-tag">Game Dev</div>
-              <h3 class="card-title">Project<br>Three</h3>
+        <div class="proj-col">
+          <div class="card-title-top">Ant-Man and the Wasp: Quantumania</div>
+          <div class="proj-card" tabindex="0" role="button" aria-label="Open Ant-Man and the Wasp: Quantumania"
+            data-title="Ant-Man and the Wasp: Quantumania"
+            data-tag="Game Dev"
+            data-desc="A full-scale VR experience for a Transformers-themed venue. Built interactive real-time environments with custom tooling to streamline artist workflows and hit aggressive performance targets."
+            data-chips="Unity,C#,HLSL,VR,Custom Tools"
+            style="
+              --ry: 0deg; --tx: 0px; --sc: 1;
+              --bg: url('images/thumbnails/3_project.png');
+            ">
+            <div class="card-shine"></div>
+            <div class="card-content">
+              <div>
+                <div class="card-tag">Game Dev</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="proj-card" tabindex="0" role="button" aria-label="Open Project 4"
-          data-title="Project 4"
-          data-tag="Tools & Shaders"
-          data-desc="A suite of procedural shader tools and editor utilities designed to accelerate art production. Reduced iteration time significantly by automating repetitive tasks and exposing intuitive artist-facing controls."
-          data-chips="Python,GLSL,Shader Graph,DCC Tools,Automation"
-          style="
-            --ry: -8deg; --tx: 14px; --sc: 0.96;
-            --bg: url('images/thumbnails/4_project.png');
-          ">
-          <div class="card-shine"></div>
-          <div class="card-content">
-            <div>
-              <div class="card-tag">Tools & Shaders</div>
-              <h3 class="card-title">Project<br>Four</h3>
+        <div class="proj-col">
+          <div class="card-title-top">Meta Avatars 2.0</div>
+          <div class="proj-card" tabindex="0" role="button" aria-label="Open Meta Avatars 2.0"
+            data-title="Meta Avatars 2.0"
+            data-tag="Tools & Shaders"
+            data-desc="A suite of procedural shader tools and editor utilities designed to accelerate art production. Reduced iteration time significantly by automating repetitive tasks and exposing intuitive artist-facing controls."
+            data-chips="Python,GLSL,Shader Graph,DCC Tools,Automation"
+            style="
+              --ry: -8deg; --tx: 14px; --sc: 0.96;
+              --bg: url('images/thumbnails/4_project.png');
+            ">
+            <div class="card-shine"></div>
+            <div class="card-content">
+              <div>
+                <div class="card-tag">Tools & Shaders</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="proj-card" tabindex="0" role="button" aria-label="Open Project 5"
-          data-title="Project 5"
-          data-tag="Generative AI"
-          data-desc="An experimental prototype exploring generative AI at the intersection of art and technology. Integrated LLM-driven workflows with real-time rendering to produce novel interactive visual experiences."
-          data-chips="Python,LLM,Stable Diffusion,ComfyUI,Real-Time"
-          style="
-            --ry: -16deg; --tx: 28px; --sc: 0.91;
-            --bg: url('images/thumbnails/5_project.png');
-          ">
-          <div class="card-shine"></div>
-          <div class="card-content">
-            <div>
-              <div class="card-tag">Generative AI</div>
-              <h3 class="card-title">Project<br>Five</h3>
+        <div class="proj-col">
+          <div class="card-title-top">Meta Horizon</div>
+          <div class="proj-card" tabindex="0" role="button" aria-label="Open Meta Horizon"
+            data-title="Meta Horizon"
+            data-tag="Generative AI"
+            data-desc="An experimental prototype exploring generative AI at the intersection of art and technology. Integrated LLM-driven workflows with real-time rendering to produce novel interactive visual experiences."
+            data-chips="Python,LLM,Stable Diffusion,ComfyUI,Real-Time"
+            style="
+              --ry: -16deg; --tx: 28px; --sc: 0.91;
+              --bg: url('images/thumbnails/5_project.png');
+            ">
+            <div class="card-shine"></div>
+            <div class="card-content">
+              <div>
+                <div class="card-tag">Generative AI</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1233,8 +1266,7 @@
     <div class="about-inner">
 
       <div class="about-photo">
-        <!-- Replace src with your photo path, e.g. src="photo.jpg" -->
-        <div class="about-photo-placeholder">Your photo here</div>
+        <img src="images/profile.png" alt="Yimin Zhang">
       </div>
 
       <div class="about-card">
