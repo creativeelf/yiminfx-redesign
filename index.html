@@ -462,7 +462,8 @@
 
     @media (max-width: 700px) {
       /* Collapse nav to: Menu (hamburger) + centered logo; rest in dropdown */
-      .nav-list-left li:nth-child(2),
+      nav .nav-menu-item { display: flex !important; }
+      .nav-list-left li:not(.nav-menu-item),
       .nav-list-right { display: none !important; }
       .nav-drawer { display: flex; }
 
@@ -849,6 +850,9 @@
 
     .nav-list-right { justify-content: flex-end; }
 
+    /* Hamburger only appears on mobile */
+    .nav-menu-item { display: none; }
+
     .nav-logo {
       display: flex;
       align-items: center;
@@ -1198,7 +1202,7 @@
     <!-- ── Nav content ── -->
     <div class="nav-inner">
       <ul class="nav-list nav-list-left">
-        <li>
+        <li class="nav-menu-item">
           <a href="#" aria-label="Menu">
             <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <rect y="2"    width="17" height="1.5" rx="0.75"/>
@@ -1209,6 +1213,7 @@
           </a>
         </li>
         <li><a href="#reel">Reel</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
       </ul>
 
       <!-- Center logo -->
@@ -1228,7 +1233,6 @@
       </a>
 
       <ul class="nav-list nav-list-right">
-        <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#career">Career</a></li>
         <li><a href="#about">About</a></li>
       </ul>
