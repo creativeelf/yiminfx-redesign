@@ -32,6 +32,49 @@
       border-bottom: none; /* SVG handles the bottom border */
     }
 
+    /* Mobile dropdown menu (hidden on desktop) */
+    .nav-drawer {
+      position: fixed;
+      top: 44px;
+      left: 0;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 6px 0;
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+    .nav-drawer.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-drawer a {
+      color: rgba(245,245,247,0.9);
+      text-decoration: none;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      padding: 14px 24px;
+    }
+    .nav-drawer a:active { background: rgba(255,255,255,0.08); }
+
+    /* Soft fade below the nav so its dark blurred edge dissolves into the
+       page instead of leaving a hard horizontal seam over the hero. */
+    nav::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+      pointer-events: none;
+      z-index: -1;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -90,7 +133,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.15);
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.15) 78%,
+        #0a0a0a 100%);
       text-align: center;
       padding: 0 20px;
     }
@@ -412,6 +458,11 @@
     }
 
     @media (max-width: 700px) {
+      /* Collapse nav to: Menu (hamburger) + centered logo; rest in dropdown */
+      .nav-list-left li:nth-child(2),
+      .nav-list-right { display: none !important; }
+      .nav-drawer { display: flex; }
+
       .about-inner {
         grid-template-columns: 1fr;
         padding: 0 20px;
@@ -680,10 +731,29 @@
     }
 
     @media (max-width: 700px) {
-      .card-strip { gap: 6px; padding: 10px 16px 50px; }
-      .proj-col { flex: 0 0 130px; }
-      .proj-card { width: 130px; height: 210px; }
-      .card-title-top { font-size: 12px; min-height: 3em; }
+      /* Flatten the 3D fan into a horizontal swipe carousel */
+      .card-stage { perspective: none; margin-top: 32px; }
+      .card-strip {
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 14px;
+        padding: 10px 20px 30px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .card-strip::-webkit-scrollbar { display: none; }
+      .proj-col { flex: 0 0 78%; scroll-snap-align: center; }
+      .proj-card,
+      .proj-card:hover,
+      .proj-card:focus-visible {
+        width: 100%;
+        height: 340px;
+        transform: none !important;
+        z-index: auto !important;
+      }
+      .card-title-top { font-size: 14px; min-height: 2.5em; }
       .overlay-hero { padding: 0 24px 40px; min-height: 45vh; }
       .overlay-body { padding: 40px 24px 80px; }
     }
@@ -1027,14 +1097,16 @@
 
     /* mobile: collapse to vertical */
     @media (max-width: 760px) {
-      .tl-scroll { padding: 0 20px; margin-top: 40px; }
-      .tl-track { display: flex; flex-direction: column; height: auto; width: 100%; padding: 0; }
+      .tl-scroll { padding: 0 20px; margin-top: 40px; overflow-x: hidden; cursor: default; }
+      .tl-track { display: flex; flex-direction: column; height: auto; width: 100%; min-width: 0; padding: 0; }
+      .tl-entry { min-width: 0; }
       .tl-track::before { top: 0; bottom: 0; left: 20px; right: auto; width: 1px; height: auto; transform: none; }
-      .tl-entry { flex-direction: row; width: 100%; margin: 0 0 32px 0; align-items: flex-start; }
-      .tl-half { display: none; }
-      .tl-logo { margin: 0 18px 0 14px; flex-shrink: 0; width: 40px; height: 40px; }
+      .tl-entry { flex-direction: row; width: 100%; margin: 0 0 32px 0; align-items: flex-start; flex-wrap: nowrap; }
+      .tl-logo { order: -1; margin: 0 16px 0 0; flex-shrink: 0; width: 40px; height: 40px; }
+      .tl-half { display: block; flex: 1 1 auto; min-width: 0; width: auto; }
+      .tl-half.bottom { display: none; }
       .tl-stem { display: none; }
-      .tl-card { width: 100%; }
+      .tl-card { width: 100%; box-sizing: border-box; }
     }
   </style>
 </head>
@@ -1105,6 +1177,14 @@
         <li><a href="#career">Career</a></li>
         <li><a href="#about">About</a></li>
       </ul>
+    </div>
+
+    <!-- Mobile dropdown (toggled by the Menu button on small screens) -->
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <a href="#reel">Reel</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#career">Career</a>
+      <a href="#about">About</a>
     </div>
 
   </nav>
@@ -1478,7 +1558,9 @@
           }
 
           /* ── Logo mask (cover-fit, centred) ── */
-          float scl=max(u_res.x/u_logoRes.x, u_res.y/u_logoRes.y);
+          /* Scroll-driven zoom: logo grows as the page scrolls down */
+          float zoom = 1.0 + u_scroll * 0.85;
+          float scl=max(u_res.x/u_logoRes.x, u_res.y/u_logoRes.y) * zoom;
           vec2  dSz=u_logoRes*scl;
           vec2  off=(u_res-dSz)*.5;
           vec2  luv=(gl_FragCoord.xy-off)/dSz;
@@ -1676,6 +1758,18 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeProject();
     });
+
+    // Mobile dropdown: toggle via the Menu button
+    const navDrawer = document.getElementById('navDrawer');
+    const menuBtn = document.querySelector('.nav-list-left a[aria-label="Menu"]');
+    if (menuBtn && navDrawer) {
+      menuBtn.addEventListener('click', e => {
+        e.preventDefault();
+        navDrawer.classList.toggle('is-open');
+      });
+      navDrawer.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => navDrawer.classList.remove('is-open')));
+    }
 
     // Sci-fi nav: activate on scroll
     const mainNav = document.getElementById('mainNav');
