@@ -715,6 +715,58 @@
       letter-spacing: -0.01em;
     }
 
+    .overlay-section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2997ff;
+      margin: 36px 0 16px;
+    }
+    .overlay-section-label:empty { display: none; }
+
+    .overlay-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .overlay-bullets:empty { display: none; }
+    .overlay-bullets li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #c7c7cc;
+      margin-bottom: 14px;
+    }
+    .overlay-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 11px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2997ff;
+    }
+
+    .overlay-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .overlay-gallery:empty { display: none; }
+    .overlay-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .overlay-gallery img:first-child { grid-column: 1 / -1; }
+
     .overlay-chips {
       display: flex;
       flex-wrap: wrap;
@@ -759,6 +811,7 @@
       .card-title-top { font-size: 14px; min-height: 2.5em; }
       .overlay-hero { padding: 0 24px 40px; min-height: 45vh; }
       .overlay-body { padding: 40px 24px 80px; }
+      .overlay-gallery { grid-template-columns: 1fr; }
     }
 
     /* ── Hero canvas ── */
@@ -1297,9 +1350,11 @@
           <div class="card-title-top">Meta Avatars 2.0</div>
           <div class="proj-card" tabindex="0" role="button" aria-label="Open Meta Avatars 2.0"
             data-title="Meta Avatars 2.0"
-            data-tag="Tools & Shaders"
-            data-desc="A suite of procedural shader tools and editor utilities designed to accelerate art production. Reduced iteration time significantly by automating repetitive tasks and exposing intuitive artist-facing controls."
-            data-chips="Python,GLSL,Shader Graph,DCC Tools,Automation"
+            data-tag="Avatar Identity Systems"
+            data-desc="Led development of avatar systems serving billions of users across Facebook, Instagram, WhatsApp, Messenger, and Horizon. Engineered USD-based node-graph systems, automated texture processing with Python and Maya, and achieved 30–35% faster rendering through Blueprint optimization — spanning skin, makeup, diverse body types, and modular clothing, and bridging high-level artistic vision with rigorous technical execution at platform scale."
+            data-bullets="Revamped visual fidelity through subsurface-scattering simulation and complexion layering optimized for darker skin tones|Developed a parametric duotone hair system with 260+ variants, driving a 10× increase in feature adoption|Optimized performance metrics for the Aspirational Bodies feature launch|Implemented LOD4 architecture supporting massive crowds at Connect 2025 events|Mentored artists and fostered collaborative pipeline development"
+            data-gallery="images/meta_avatars/01_action.jpg,images/meta_avatars/02_connect_stage.jpg,images/meta_avatars/03_aspirational_bodies.jpg"
+            data-chips="USD,Python,Maya,HLSL,Spark SL,Subsurface Scattering,LOD,Real-Time"
             style="
               --ry: -8deg; --tx: 14px; --sc: 0.96;
               --bg: url('images/thumbnails/4_project.png');
@@ -1353,6 +1408,9 @@
     </div>
     <div class="overlay-body">
       <p class="overlay-desc" id="overlayDesc"></p>
+      <p class="overlay-section-label" id="overlayBulletsLabel"></p>
+      <ul class="overlay-bullets" id="overlayBullets"></ul>
+      <div class="overlay-gallery" id="overlayGallery"></div>
       <div class="overlay-chips" id="overlayChips"></div>
     </div>
   </div>
@@ -1364,33 +1422,33 @@
     <div class="tl-scroll" id="tlScroll">
       <div class="tl-track">
 
-        <!-- 1 · Transformer VR (oldest) -->
+        <!-- 1 · DMG Entertainment (oldest) -->
         <div class="tl-entry tl-above">
           <div class="tl-half top">
             <div class="tl-card">
-              <div class="tl-date">2019 – 2021</div>
-              <div class="tl-company">Transformer VR</div>
-              <div class="tl-role">Technical Artist</div>
-              <p class="tl-desc">Developed real-time interactive VR attractions for a themed entertainment venue. Shipped multiple titles on PC VR hardware — responsible for shaders, LOD systems, and artist-facing tooling.</p>
+              <div class="tl-date">2019 – 2020</div>
+              <div class="tl-company">DMG Entertainment</div>
+              <div class="tl-role">Technical Artist · Transformers VR</div>
+              <p class="tl-desc">Shipped three location-based VR attractions for the Transformers Theme Park in Shanghai. Calibrated an 80-camera OptiTrack volume, authored UE4 in-game animation and Optimus Prime intro cinematics, established park operating procedures, and bridged DMG with vendor game studios on the art pipeline.</p>
             </div>
             <div class="tl-stem"></div>
           </div>
-          <div class="tl-logo"><img src="images/company/1_logo.png" alt="Transformer VR logo"></div>
+          <div class="tl-logo"><img src="images/company/1_logo.png" alt="DMG Entertainment logo"></div>
           <div class="tl-half bottom"></div>
         </div>
 
-        <!-- 2 · Marvel Studios -->
+        <!-- 2 · The Third Floor -->
         <div class="tl-entry tl-above">
           <div class="tl-half top">
             <div class="tl-card">
-              <div class="tl-date">2021 – 2022</div>
-              <div class="tl-company">Marvel Studios</div>
-              <div class="tl-role">Technical Artist · Film VFX</div>
-              <p class="tl-desc">Integrated technical art across CG pipelines for <em style="color:#c7c7cc;">Ant-Man and The Wasp: Quantumania</em>. Supported look-dev and deformation systems for hero characters and environments through production and delivery.</p>
+              <div class="tl-date">2020 – 2022</div>
+              <div class="tl-company">The Third Floor</div>
+              <div class="tl-role">Technical Director · Virtual Production</div>
+              <p class="tl-desc">Built Unreal Blueprint and Python tooling for shot, lighting, and NPR-rendering pipelines. As Virtual Production TA on <em style="color:#c7c7cc;">Ant-Man and The Wasp: Quantumania</em>, oversaw engine renders for 20+ visualization sequences and authored FX materials for procedural ant crowds, shrink/shield effects, and energy creatures — while mentoring Unreal TA/TD trainees.</p>
             </div>
             <div class="tl-stem"></div>
           </div>
-          <div class="tl-logo"><img src="images/company/2_logo.png" alt="Marvel Studios logo"></div>
+          <div class="tl-logo"><img src="images/company/2_logo.png" alt="The Third Floor logo"></div>
           <div class="tl-half bottom"></div>
         </div>
 
@@ -1400,8 +1458,8 @@
             <div class="tl-card">
               <div class="tl-date">2022 – Present</div>
               <div class="tl-company">Meta</div>
-              <div class="tl-role">Technical Artist · Reality Labs</div>
-              <p class="tl-desc">Architecting real-time AR effects for Meta's social platforms. Building custom GLSL shaders, procedural tools, and optimised render pipelines that ship immersive features to hundreds of millions of users on Instagram and Facebook.</p>
+              <div class="tl-role">Technical Artist · Avatars</div>
+              <p class="tl-desc">Technical Artist on Avatars and TL for Skin &amp; Makeup — shipped 230+ hair and 125+ makeup assets. Designed a USD node-graph system simulating subsurface scattering and multi-layer compositing, authored custom HLSL/Spark SL shaders for AR effects across Messenger and Instagram, and built Python/Qt Maya tooling to automate artist workflows.</p>
             </div>
             <div class="tl-stem"></div>
           </div>
@@ -1722,6 +1780,9 @@
     const tagEl      = document.getElementById('overlayTag');
     const descEl     = document.getElementById('overlayDesc');
     const chipsEl    = document.getElementById('overlayChips');
+    const bulletsEl       = document.getElementById('overlayBullets');
+    const bulletsLabelEl  = document.getElementById('overlayBulletsLabel');
+    const galleryEl       = document.getElementById('overlayGallery');
     const backBtn    = document.getElementById('overlayBackBtn');
 
     function openProject(card) {
@@ -1733,6 +1794,23 @@
       chipsEl.innerHTML = card.dataset.chips
         .split(',')
         .map(c => `<span class="overlay-chip">${c.trim()}</span>`)
+        .join('');
+
+      // Optional key-accomplishments bullet list (pipe-separated)
+      const bullets = (card.dataset.bullets || '')
+        .split('|')
+        .map(b => b.trim())
+        .filter(Boolean);
+      bulletsEl.innerHTML = bullets.map(b => `<li>${b}</li>`).join('');
+      bulletsLabelEl.textContent = bullets.length ? (card.dataset.bulletsLabel || 'Key Accomplishments') : '';
+
+      // Optional image gallery (comma-separated image paths)
+      const gallery = (card.dataset.gallery || '')
+        .split(',')
+        .map(g => g.trim())
+        .filter(Boolean);
+      galleryEl.innerHTML = gallery
+        .map(src => `<img src="${src}" alt="${card.dataset.title} project image" loading="lazy">`)
         .join('');
 
       overlay.setAttribute('aria-hidden', 'false');
