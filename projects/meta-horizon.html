@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meta Horizon — Yimin Zhang</title>
-  <meta name="description" content="An experimental prototype exploring generative AI at the intersection of art and technology. Integrated LLM-driven workflows with real-time rendering to pr" />
+  <meta name="description" content="When preparing for Meta Connect 2025, our mandate was to drastically increase avatar concurrency in Horizon Event Arenas without sacrificing the visual fid" />
   <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/creativeelf/yiminfx-redesign@main/images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="https://cdn.jsdelivr.net/gh/creativeelf/yiminfx-redesign@main/images/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/creativeelf/yiminfx-redesign@main/images/apple-touch-icon.png" />
@@ -21,14 +21,39 @@
 
   <header class="overlay-hero" style="--overlay-bg: url('https://cdn.jsdelivr.net/gh/creativeelf/yiminfx-redesign@main/images/thumbnails/5_project.png');">
     <div class="overlay-hero-content">
-      <p class="overlay-tag">Generative AI</p>
+      <p class="overlay-tag">Crowd Systems &amp; LOD</p>
       <h1 class="overlay-title">Meta Horizon</h1>
     </div>
   </header>
 
-  <main class="overlay-body">
-    <p class="overlay-desc">An experimental prototype exploring generative AI at the intersection of art and technology. Integrated LLM-driven workflows with real-time rendering to produce novel interactive visual experiences.</p>
-    <div class="overlay-chips"><span class="overlay-chip">Python</span><span class="overlay-chip">LLM</span><span class="overlay-chip">Stable Diffusion</span><span class="overlay-chip">ComfyUI</span><span class="overlay-chip">Real-Time</span></div>
+  <main class="overlay-body doc-body">
+
+    <p class="doc-headline">Scaling Identity: Unlocking High Avatar Concurrency for Meta Connect 2025</p>
+    <p class="doc-tldr">When preparing for Meta Connect 2025, our mandate was to drastically increase avatar concurrency in Horizon Event Arenas without sacrificing the visual fidelity of our newly launched Aspirational Bodies. To achieve this, I spearheaded the technical execution and rollout of our LOD4 (Level of Detail 4) architecture and imposter mesh pipelines. By implementing smart auto-LOD updates and delivering underlying graph support for massive crowds, I enabled the platform to support 128 networked and 800 unnetworked avatars in a single world, directly elevating the sense of presence and community for our largest events.</p>
+    <dl class="doc-meta">
+      <dt>Studio</dt><dd>Meta Reality Labs</dd>
+      <dt>Project</dt><dd>Horizon Events for Connect 2025</dd>
+      <dt>Role</dt><dd>Technical Artist</dd>
+      <dt>Partners</dt><dd>Engineering, Metaverse Art, QA</dd>
+      <dt>Key Tech</dt><dd>USD, Python, Maya, DDAP, PopcornFX</dd>
+      <dt>Results</dt><dd>LOD4 rollout for Connect 2025 · +7 concurrent LOD2 avatars per world · 128 networked &amp; 800 unnetworked crowd avatars · 1,400+ modular clothing assets safeguarded</dd>
+    </dl>
+    <h2 class="doc-h2">The Context</h2>
+    <p class="doc-p">Meta's avatars serve as the digital identity layer across the entire ecosystem — from mobile apps to fully immersive VR environments in Horizon. Directing technical art and building materials at this platform scale is a unique challenge because you are architecting a parametric system that must gracefully interpret millions of possible user configurations in real-time.</p>
+    <p class="doc-p">As we approached Meta Connect 2025, the challenge evolved from visual stylization to sheer computational scale. We needed to host vibrant, packed event arenas. However, rendering highly customizable avatars — especially with the dense geometric and texture data required for our new Aspirational Bodies — threatened to bottleneck our rendering performance and severely limit our Concurrent Users (CCU).</p>
+    <h2 class="doc-h2">The Challenges</h2>
+    <p class="doc-p">To unlock high concurrency, the underlying avatar architecture required a massive optimization pass. Our existing Level of Detail (LOD) strategies were not aggressive enough to support thousands of diverse characters in a single physical instance. We needed an extreme optimization lever — LOD4 — to drop the rendering cost of distant avatars while maintaining their distinct silhouettes and customizations. Furthermore, we needed a robust system for background crowds that wouldn't tax the device's CPU or network bandwidth, demanding a seamless integration between our real-time character meshes and particle-based crowd solutions.</p>
+    <h2 class="doc-h2">The Approach</h2>
+    <h3 class="doc-h3">Architecting the LOD4 Rollout</h3>
+    <p class="doc-p">To achieve our high CCU and performance targets in Central Prime and Event Arenas, I enabled the structural rollout of LOD4. I implemented comprehensive blueprint changes with auto-LOD updates, which led to smarter geometric simplification and vastly improved volume and silhouette retention at a distance. To ensure our customization ecosystem survived this aggressive optimization, I leveraged mass-ingestion pipelines, pushing over 700 assets through the system to enable tri-simplification on LOD4.</p>
+    <h3 class="doc-h3">Safeguarding Visual Quality at Scale</h3>
+    <p class="doc-p">Optimization cannot come at the expense of our established quality bar. I spearheaded a Wedgy-based asset review workflow for over 1,400 clothing assets at LOD4. I actively collaborated with our cross-functional engineering and QA partners to thoroughly vet these revisions, triaging and mitigating asset failures to strengthen our system's error fallback.</p>
+    <h3 class="doc-h3">Engineering Imposters and Massive Crowds</h3>
+    <p class="doc-p">To fill the stadiums for Connect 2025, I architected the technical foundation for our crowd systems. I delivered the DDAP (Dynamic Data Avatar Pipeline) graph support necessary to drive 128 networked crowds and 800 unnetworked crowds simultaneously. I developed the logic to bake over 200 high-resolution textures from various avatar configurations down to just 6 optimized crowd meshes for PopcornFX, delivering imposter avatars that effectively proxied user appearances without the standard rendering overhead. This offline imposter texture approach eliminated the need for heavy DDAP textures at a distance, saving significant processing time and ensuring the MAG Demo's success.</p>
+    <h2 class="doc-h2">Shipping, and What It Actually Means</h2>
+    <p class="doc-p">By refactoring these blueprints and deploying the LOD4 architecture, we successfully improved overall scalability, allowing for an additional 7 concurrent LOD2 avatars per world and supporting massive crowds for our keynotes.</p>
+    <p class="doc-p">Ultimately, this milestone ingrained in me a deep appreciation for the communal nature of platform-scale development. Whether I was working closely with DDAP and Events engineers to land blueprint changes in the correct revisions, or triaging launch blockers to ensure our imposter pipelines held up to scrutiny, I actively fostered a collaborative and self-sufficient environment. We continuously adapt to new paradigms of real-time rendering, proving that the scalable, optimized infrastructure we engineer is just as crucial to the user experience as the final character on the screen.</p>
+    <div class="overlay-chips"><span class="overlay-chip">USD</span><span class="overlay-chip">Python</span><span class="overlay-chip">Maya</span><span class="overlay-chip">DDAP</span><span class="overlay-chip">PopcornFX</span><span class="overlay-chip">LOD4</span><span class="overlay-chip">Real-Time</span></div>
   </main>
 
 </body>
