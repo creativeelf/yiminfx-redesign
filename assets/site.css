@@ -791,6 +791,9 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
     .overlay-gallery img:first-child { grid-column: 1 / -1; }
+    /* Exactly two images: side by side instead of one full + one half */
+    .overlay-gallery img:first-child:nth-last-child(2),
+    .overlay-gallery img:first-child:nth-last-child(2) ~ img { grid-column: auto; }
 
     .overlay-chips {
       display: flex;
