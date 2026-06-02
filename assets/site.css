@@ -791,6 +791,31 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
     .overlay-gallery img:first-child { grid-column: 1 / -1; }
+
+    /* ── Inline project images (between text sections) ── */
+    .doc-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: block;
+      margin: 32px 0;
+      object-fit: cover;
+    }
+    .doc-img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 32px 0;
+    }
+    .doc-img-pair img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      object-fit: cover;
+    }
+    @media (max-width: 700px) {
+      .doc-img-pair { grid-template-columns: 1fr; }
+    }
     /* Exactly two images: side by side instead of one full + one half */
     .overlay-gallery img:first-child:nth-last-child(2),
     .overlay-gallery img:first-child:nth-last-child(2) ~ img { grid-column: auto; }

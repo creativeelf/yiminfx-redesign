@@ -41,6 +41,7 @@
     <h2 class="doc-h2">The Context</h2>
     <p class="doc-p">Meta's avatars serve as the digital identity layer across the entire ecosystem — from mobile apps to fully immersive VR environments in Horizon. Directing technical art and building materials at this platform scale is a unique challenge because you are architecting a parametric system that must gracefully interpret millions of possible user configurations in real-time.</p>
     <p class="doc-p">As we approached Meta Connect 2025, the challenge evolved from visual stylization to sheer computational scale. We needed to host vibrant, packed event arenas. However, rendering highly customizable avatars — especially with the dense geometric and texture data required for our new Aspirational Bodies — threatened to bottleneck our rendering performance and severely limit our Concurrent Users (CCU).</p>
+    <img src="/images/horizon/01.jpg" alt="Meta Horizon Worlds virtual event environment" class="doc-img" loading="lazy">
     <h2 class="doc-h2">The Challenges</h2>
     <p class="doc-p">To unlock high concurrency, the underlying avatar architecture required a massive optimization pass. Our existing Level of Detail (LOD) strategies were not aggressive enough to support thousands of diverse characters in a single physical instance. We needed an extreme optimization lever — LOD4 — to drop the rendering cost of distant avatars while maintaining their distinct silhouettes and customizations. Furthermore, we needed a robust system for background crowds that wouldn't tax the device's CPU or network bandwidth, demanding a seamless integration between our real-time character meshes and particle-based crowd solutions.</p>
     <h2 class="doc-h2">The Approach</h2>
@@ -53,12 +54,7 @@
     <h2 class="doc-h2">Shipping, and What It Actually Means</h2>
     <p class="doc-p">By refactoring these blueprints and deploying the LOD4 architecture, we successfully improved overall scalability, allowing for an additional 7 concurrent LOD2 avatars per world and supporting massive crowds for our keynotes.</p>
     <p class="doc-p">Ultimately, this milestone ingrained in me a deep appreciation for the communal nature of platform-scale development. Whether I was working closely with DDAP and Events engineers to land blueprint changes in the correct revisions, or triaging launch blockers to ensure our imposter pipelines held up to scrutiny, I actively fostered a collaborative and self-sufficient environment. We continuously adapt to new paradigms of real-time rendering, proving that the scalable, optimized infrastructure we engineer is just as crucial to the user experience as the final character on the screen.</p>
-    <p class="overlay-section-label">Gallery</p>
-    <div class="overlay-gallery">
-      <img src="/images/horizon/01.jpg" alt="Meta Horizon project image" loading="lazy">
-      <img src="/images/horizon/02.jpg" alt="Meta Horizon project image" loading="lazy">
-    </div>
-    <div class="overlay-chips"><span class="overlay-chip">USD</span><span class="overlay-chip">Python</span><span class="overlay-chip">Maya</span><span class="overlay-chip">DDAP</span><span class="overlay-chip">PopcornFX</span><span class="overlay-chip">LOD4</span><span class="overlay-chip">Real-Time</span></div>
+<div class="overlay-chips"><span class="overlay-chip">USD</span><span class="overlay-chip">Python</span><span class="overlay-chip">Maya</span><span class="overlay-chip">DDAP</span><span class="overlay-chip">PopcornFX</span><span class="overlay-chip">LOD4</span><span class="overlay-chip">Real-Time</span></div>
   </main>
 
 </body>
