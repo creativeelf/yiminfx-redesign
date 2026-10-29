@@ -693,6 +693,31 @@
       flex-shrink: 0;
     }
 
+    /* Keep the featured faces inside the crop of these portrait posters. */
+    .overlay-hero.overlay-hero--avatars,
+    .overlay-hero.overlay-hero--ant-man {
+      min-height: max(58vh, 50vw);
+    }
+    .overlay-hero.overlay-hero--horizon {
+      min-height: max(58vh, 55vw);
+    }
+    .overlay-hero--avatars { background-position: center top; }
+    .overlay-hero--horizon { background-position: center 63%; }
+    .overlay-hero--transformer { background-position: center 24%; }
+    .overlay-hero--ant-man { background-position: center 15%; }
+
+    @media (max-width: 700px) {
+      .overlay-hero--transformer,
+      .overlay-hero--ant-man { background-position: center top; }
+      .overlay-hero.overlay-hero--avatars,
+      .overlay-hero.overlay-hero--ant-man {
+        min-height: max(45vh, 50vw);
+      }
+      .overlay-hero.overlay-hero--horizon {
+        min-height: max(45vh, 55vw);
+      }
+    }
+
     .overlay-hero::after {
       content: '';
       position: absolute;
