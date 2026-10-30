@@ -21,7 +21,7 @@ entries.forEach((entry,i)=>{
   const button=document.createElement('button');button.className='skill';button.style.setProperty('--color',entry.color);button.setAttribute('aria-label',`${entry.label}, ${entry.group}`);
   for(let d=0;d<3;d++){const depth=document.createElement('span');depth.className='depth';depth.textContent=entry.label;depth.setAttribute('aria-hidden','true');button.append(depth);}
   const face=document.createElement('span');face.className='face';face.textContent=entry.label;button.append(face);field.append(button);entry.el=button;
-  const inspect=()=>{selected=entry;entries.forEach(e=>e.el.classList.toggle('selected',e===entry));document.querySelector('#detail-category').textContent=entry.group.toUpperCase();document.querySelector('#detail').textContent=entry.label+' � From Yimin's r�sum�';draw();};
+  const inspect=()=>{selected=entry;entries.forEach(e=>e.el.classList.toggle('selected',e===entry));document.querySelector('#detail-category').textContent=entry.group.toUpperCase();document.querySelector('#detail').textContent=entry.label+' · From Yimin’s résumé';draw();};
   button.addEventListener('click',inspect);button.addEventListener('focus',inspect);
 });
 const filters=document.querySelector('#filters');
